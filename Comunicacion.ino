@@ -3,23 +3,22 @@
 #include <BlynkSimpleEsp32.h>
 
 char auth[] = "YOUR_BLYNK_AUTH_TOKEN"; 
-char ssid[] = "MillerCel";  
-char pass[] = "123456789";     
+char ssid[] = "Diego_EF";  
+char pass[] = "2195583";     
 
 float current = 0;
 
 BlynkTimer timer;
 
 void sendCurrentData() {
-  Blynk.virtualWrite(V0, current);
+  Blynk.virtualWrite(V0, current); // Enviando corriente medida (mA)
 }
 
 void setup() {
   Serial.begin(115200);
-
+  Serial.println("Proyecto de Medición de Corriente");
   Blynk.begin(auth, ssid, pass);
-
-  timer.setInterval(10000L, sendCurrentData); //temporizador para enviar datos cada 10 segundos
+  timer.setInterval(10000L, sendCurrentData);
 }
 
 void loop() {
